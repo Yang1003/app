@@ -18,7 +18,7 @@ public class AppApplication {
     public static void main(String[] args) {
         log.info("===============项目启动===============");
         SpringApplication.run(AppApplication.class, args);
-        log.info("===============项目成功===============");
+        log.info("===============启动成功===============");
     }
 
 }
