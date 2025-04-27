@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path:
+
+spring:
+  application:
+    name: APP
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-request-size: 800MB
+      max-file-size: 800MB
+  redis:
+    redisson:
+      file: classpath:redisson.yaml
+
+logging:
+  config: classpath:logback-spring.xml
