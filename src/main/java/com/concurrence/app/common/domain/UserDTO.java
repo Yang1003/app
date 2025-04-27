@@ -1,0 +1,81 @@
+package com.concurrence.app.common.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import lombok.Data;
+
+/**
+ * @author pengli
+ */
+@Data
+public class UserDTO implements Serializable {
+
+    private String familylocation;//"武汉市",
+    private String postname;//"{\"zh\":\"营销经理（国内）\",\"en\":\"营销经理（国内）\"}",
+    private String ddesc2;//"{\"zh\":\"市场部\",\"en\":\"市场部\"}",
+    private String ddesc1;//"{\"zh\":\"光配线系统产出线\",\"en\":\"光配线系统产出线\"}",
+    private String language;//"zh",
+    private String ddesc4;//null,
+    private String ddesc3;//"{\"zh\":\"国内业务部\",\"en\":\"国内业务部\"}",
+    private String persontype;//"1",
+    private String userid;//"3095",
+    private String cmdeptid;//"701739",
+    private String ddesc0;//"{\"zh\":\"烽火通信科技股份有限公司\",\"en\":\"Fiberhome Telecommunication Technologies\"}",
+    private Date fromdate;//"2013-07-05 00:00:00",
+    private String englishname;//"ljxiao",
+    private String isadditionalpost;//"N",
+    private String probation;//false,
+    private String todate;//null,
+    private String confirmablity;//"开通",
+    private String postdesc;//"营销经理（国内）",
+    private String staffCategory;//"01",
+    private String model;//"UserPostDept",
+    private String usercode;//"0210993942",
+    private String pcategory;//null,
+    private String tenant;//"0001",
+    private String bukrs;//"FH01",
+    private String openid;//"ABC",
+    private String cmpostid;//"804725",
+    private String dtype;//"05",
+    private String usertype;//"01",
+    private String telephone;//"12341234123",
+    private String staffdesc;//"{\"zh\":\"肖丽娟\",\"en\":\"ljxiao\"}",
+    private String deptdesc;//"国内业务部",
+    private Date edate;//"2022-08-26 14:13:26",
+    private String deptname;//"{\"zh\":\"国内业务部\",\"en\":\"国内业务部\"}",
+    private String pathname;//"\\烽火通信科技股份有限公司\\光配线系统产出线\\市场部\\",
+    private String paycard;//"12341234123",
+    private Date cdate;//"2009-09-15 14:15:01",
+    private String name;//"肖丽娟",
+    private String did4;//null,
+    private String did3;//"701740",
+    private String did2;//"701739",
+    private String did1;//"701738",
+    private String did0;//"700001",
+    private Date birthday;//"1983-10-18 00:00:00",
+    private String modelscope;//null,
+    private String dname0;//"烽火通信科技股份有限公司",
+    private String dname1;//"光配线系统产出线",
+    private String dname2;//"市场部",
+    private String dname3;//"国内业务部",
+    private String dname4;//null,
+    private Boolean isactive;//false,
+    private String deptid;//"701740",
+    private String postid;//"8001996",
+    private String nickname;//null,
+    private String dcategory;//null,
+    private String email;//"test@fiberhome.com",
+    private String acronym;//"xlj",
+    private String sex;//"女",
+    private String mobile;//"12341234123",
+    private String deptpath;//"/700001/701738/701739/",
+    private String asscard;//"12341234123",
+    private String deptdepth;//4,
+    private String service;//"newauth",
+    private String posttype;//null,
+    private String userdesc;//"肖丽娟",
+    private String workplace;//"湖北省武汉市",
+    private String levels;//"08",
+    private String username;//"ljxiao"
+}

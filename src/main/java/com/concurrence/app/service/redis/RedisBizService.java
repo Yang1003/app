@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.CountDownLatch;
 
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * .
@@ -18,6 +19,7 @@ import jakarta.annotation.Resource;
  * @date 2025/4/24 19:22
  */
 @Service
+@Slf4j
 public class RedisBizService {
 
     private static final Logger log = LoggerFactory.getLogger(RedisBizService.class);
@@ -31,7 +33,7 @@ public class RedisBizService {
             lock.lock();
             Thread.sleep(10000);
         } catch (Exception e) {
-
+            log.error("加锁失败！", e);
         } finally {
             lock.unlock();
         }

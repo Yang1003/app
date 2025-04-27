@@ -207,3 +207,215 @@ Caused by: java.lang.IllegalArgumentException: When allowCredentials is true, al
 [] 2025-04-27 11:43:06  INFO 23624 ---  [           main]  ===============项目成功===============
 [] 2025-04-27 11:43:39  INFO 23624 ---  [ionShutdownHook]  Commencing graceful shutdown. Waiting for active requests to complete
 [] 2025-04-27 11:43:39  INFO 23624 ---  [tomcat-shutdown]  Graceful shutdown complete
+[] 2025-04-27 13:30:41  INFO 17496 ---  [           main]  Starting AppApplication using Java 24.0.1 with PID 17496 (D:\code\git\app\target\classes started by Administrator in D:\code\git\app)
+[] 2025-04-27 13:30:41  INFO 17496 ---  [           main]  The following 1 profile is active: "local"
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Multiple Spring Data modules found, entering strict repository configuration mode
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Tomcat initialized with port 8091 (http)
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Starting service [Tomcat]
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Starting Servlet engine: [Apache Tomcat/10.1.40]
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Initializing Spring embedded WebApplicationContext
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Root WebApplicationContext: initialization completed in 839 ms
+[] 2025-04-27 13:30:42  INFO 17496 ---  [           main]  Redisson 3.23.5
+[] 2025-04-27 13:30:42  INFO 17496 ---  [isson-netty-2-5]  1 connections initialized for 127.0.0.1/127.0.0.1:6379
+[] 2025-04-27 13:30:43  INFO 17496 ---  [sson-netty-2-19]  24 connections initialized for 127.0.0.1/127.0.0.1:6379
+[] 2025-04-27 13:30:43  INFO 17496 ---  [           main]  Exposing 1 endpoint beneath base path '/actuator'
+[] 2025-04-27 13:30:43  INFO 17496 ---  [           main]  Tomcat started on port 8091 (http) with context path '/'
+[] 2025-04-27 13:30:43  INFO 17496 ---  [           main]  Started AppApplication in 2.369 seconds (process running for 2.99)
+[] 2025-04-27 13:30:43  INFO 17496 ---  [           main]  ===============启动成功===============
+[] 2025-04-27 13:31:35  INFO 17496 ---  [nio-8091-exec-2]  Initializing Spring DispatcherServlet 'dispatcherServlet'
+[] 2025-04-27 13:31:35  INFO 17496 ---  [nio-8091-exec-2]  Initializing Servlet 'dispatcherServlet'
+[] 2025-04-27 13:31:35  INFO 17496 ---  [nio-8091-exec-2]  Completed initialization in 1 ms
+[] 2025-04-27 13:31:45 ERROR 17496 ---  [nio-8091-exec-2]  Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0x73716745, L:/127.0.0.1:61434 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@5f3c270f[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, 3b2d4eaa-ca52-4923-b2af-bb38d232a630:102, PUBLISH]] with root cause
+
+org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0x73716745, L:/127.0.0.1:61434 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@5f3c270f[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, 3b2d4eaa-ca52-4923-b2af-bb38d232a630:102, PUBLISH]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381)
+	at org.redisson.client.handler.CommandDecoder.decodeCommandBatch(CommandDecoder.java:279)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:217)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+[] 2025-04-27 13:32:59 ERROR 17496 ---  [nio-8091-exec-4]  Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0xe8208ca7, L:/127.0.0.1:61436 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@7110a0af[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, 3b2d4eaa-ca52-4923-b2af-bb38d232a630:104, PUBLISH]] with root cause
+
+org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0xe8208ca7, L:/127.0.0.1:61436 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@7110a0af[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, 3b2d4eaa-ca52-4923-b2af-bb38d232a630:104, PUBLISH]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381)
+	at org.redisson.client.handler.CommandDecoder.decodeCommandBatch(CommandDecoder.java:279)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:217)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+[] 2025-04-27 13:32:59  INFO 17496 ---  [ionShutdownHook]  Commencing graceful shutdown. Waiting for active requests to complete
+[] 2025-04-27 13:32:59  INFO 17496 ---  [tomcat-shutdown]  Graceful shutdown complete
+[] 2025-04-27 13:34:19  INFO 20076 ---  [           main]  Starting AppApplication using Java 24.0.1 with PID 20076 (D:\code\git\app\target\classes started by Administrator in D:\code\git\app)
+[] 2025-04-27 13:34:19  INFO 20076 ---  [           main]  The following 1 profile is active: "local"
+[] 2025-04-27 13:34:19  INFO 20076 ---  [           main]  Multiple Spring Data modules found, entering strict repository configuration mode
+[] 2025-04-27 13:34:19  INFO 20076 ---  [           main]  Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[] 2025-04-27 13:34:19  INFO 20076 ---  [           main]  Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+[] 2025-04-27 13:34:20  INFO 20076 ---  [           main]  Tomcat initialized with port 8091 (http)
+[] 2025-04-27 13:34:20  INFO 20076 ---  [           main]  Starting service [Tomcat]
+[] 2025-04-27 13:34:20  INFO 20076 ---  [           main]  Starting Servlet engine: [Apache Tomcat/10.1.40]
+[] 2025-04-27 13:34:20  INFO 20076 ---  [           main]  Initializing Spring embedded WebApplicationContext
+[] 2025-04-27 13:34:20  INFO 20076 ---  [           main]  Root WebApplicationContext: initialization completed in 788 ms
+[] 2025-04-27 13:34:20  INFO 20076 ---  [           main]  Redisson 3.23.5
+[] 2025-04-27 13:34:20  INFO 20076 ---  [isson-netty-2-4]  1 connections initialized for 127.0.0.1/127.0.0.1:6379
+[] 2025-04-27 13:34:20  INFO 20076 ---  [sson-netty-2-19]  24 connections initialized for 127.0.0.1/127.0.0.1:6379
+[] 2025-04-27 13:34:21  INFO 20076 ---  [           main]  Exposing 1 endpoint beneath base path '/actuator'
+[] 2025-04-27 13:34:21  INFO 20076 ---  [           main]  Tomcat started on port 8091 (http) with context path '/'
+[] 2025-04-27 13:34:21  INFO 20076 ---  [           main]  Started AppApplication in 2.19 seconds (process running for 2.777)
+[] 2025-04-27 13:34:21  INFO 20076 ---  [           main]  ===============启动成功===============
+[] 2025-04-27 13:34:24  INFO 20076 ---  [nio-8091-exec-3]  Initializing Spring DispatcherServlet 'dispatcherServlet'
+[] 2025-04-27 13:34:24  INFO 20076 ---  [nio-8091-exec-3]  Initializing Servlet 'dispatcherServlet'
+[] 2025-04-27 13:34:24  INFO 20076 ---  [nio-8091-exec-3]  Completed initialization in 0 ms
+[] 2025-04-27 13:34:30 ERROR 20076 ---  [nio-8091-exec-3]  加锁失败！
+
+org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 149c5a8bf18676fd99e9e6e24923bd64d9b62f94, on @user_script:1.. channel: [id: 0x7095445b, L:/127.0.0.1:50504 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@c7f7201[Not completed], params: [if ((redis.call('exists', KEYS[1]) == 0) or (redis.call('hexists', KEYS[1], ARGV[2]) == 1)) then redis.call('hincrby', KEYS[1], ARGV[2], 1); redis.call('pexpire', KEYS[1], ARGV[1]); return nil; end; return redis.call('pttl', KEYS[1]);, 1, k3, 30000, ec082aaa-1ccd-4c9f-832d-b5ef9e1ce8a9:102]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381)
+	at org.redisson.client.handler.CommandDecoder.decodeCommandBatch(CommandDecoder.java:279)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:217)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+[] 2025-04-27 13:34:43 ERROR 20076 ---  [nio-8091-exec-3]  Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0x23124936, L:/127.0.0.1:50505 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@15ac16a5[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, ec082aaa-1ccd-4c9f-832d-b5ef9e1ce8a9:102, PUBLISH]] with root cause
+
+org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0x23124936, L:/127.0.0.1:50505 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@15ac16a5[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, ec082aaa-1ccd-4c9f-832d-b5ef9e1ce8a9:102, PUBLISH]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381)
+	at org.redisson.client.handler.CommandDecoder.decodeCommandBatch(CommandDecoder.java:279)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:217)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+[] 2025-04-27 13:34:58 ERROR 20076 ---  [nio-8091-exec-2]  加锁失败！
+
+org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 149c5a8bf18676fd99e9e6e24923bd64d9b62f94, on @user_script:1.. channel: [id: 0xa273bf70, L:/127.0.0.1:50506 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@7110a0af[Not completed], params: [if ((redis.call('exists', KEYS[1]) == 0) or (redis.call('hexists', KEYS[1], ARGV[2]) == 1)) then redis.call('hincrby', KEYS[1], ARGV[2], 1); redis.call('pexpire', KEYS[1], ARGV[1]); return nil; end; return redis.call('pttl', KEYS[1]);, 1, k3, 30000, ec082aaa-1ccd-4c9f-832d-b5ef9e1ce8a9:101]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381)
+	at org.redisson.client.handler.CommandDecoder.decodeCommandBatch(CommandDecoder.java:279)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:217)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+[] 2025-04-27 13:34:58 ERROR 20076 ---  [nio-8091-exec-2]  Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0x68717909, L:/127.0.0.1:50507 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@12e33134[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, ec082aaa-1ccd-4c9f-832d-b5ef9e1ce8a9:101, PUBLISH]] with root cause
+
+org.redisson.client.RedisException: WRONGTYPE Operation against a key holding the wrong kind of value script: 778cea8aada230ae060b432fc333adaec85f2f4c, on @user_script:1.. channel: [id: 0x68717909, L:/127.0.0.1:50507 - R:127.0.0.1/127.0.0.1:6379] command: (EVAL), promise: java.util.concurrent.CompletableFuture@12e33134[Not completed], params: [if (redis.call('hexists', KEYS[1], ARGV[3]) == 0) then return nil;end; local counter = redis.call('hincrby', KEYS[1], ARGV[3], -1); if (counter > 0) then redis.call('pexpire', KEYS[1], ARGV[2]); return 0; else redis.call('del', KEYS[1]); redis.call(ARGV[4], KEYS[2], ARGV[1]); return 1; end; return nil;, 2, k3, redisson_lock__channel:{k3}, 0, 30000, ec082aaa-1ccd-4c9f-832d-b5ef9e1ce8a9:101, PUBLISH]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381)
+	at org.redisson.client.handler.CommandDecoder.decodeCommandBatch(CommandDecoder.java:279)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:217)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+[] 2025-04-27 13:39:31  INFO 20076 ---  [ionShutdownHook]  Commencing graceful shutdown. Waiting for active requests to complete
+[] 2025-04-27 13:39:31  INFO 20076 ---  [tomcat-shutdown]  Graceful shutdown complete
