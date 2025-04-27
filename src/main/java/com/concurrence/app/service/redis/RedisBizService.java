@@ -58,10 +58,9 @@ public class RedisBizService {
                 try {
                     // 上锁
                     lock.lock();
-
                     // 计数器自增 1
                     this.count = this.count + 1;
-
+                    log.info("count = {}", this.count);
                 } finally {
                     // 释放锁
                     lock.unlock();
